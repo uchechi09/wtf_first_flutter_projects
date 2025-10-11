@@ -7,7 +7,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
     appBar:AppBar(
-    title: Text("Medicall"),
+    title: Text("MediCall"),
     centerTitle: true,
     leading: Icon(Icons.menu),
     actions: [
@@ -17,27 +17,32 @@ class HomePage extends StatelessWidget {
       ),
     ],
     ), 
-    body: Column(
+    body: ListView(
       children: [
         Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 4,),
           child: TextField(
             decoration: InputDecoration(
+              fillColor: Colors.grey.shade200,
+              filled: true,
               prefixIcon: Icon(Icons.search),
               hintText: "Search Hospital or Address",
               border: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey.shade300),
-                borderRadius: BorderRadius.circular(16), 
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(12), 
               ),
             ),
           ),
           
           ),
+          // widget for showing image
+          Image.asset("assets/map.jpg"),
           
-        ],
 
+      ],
+    
     ),
     );
-    
+     
   }
 }

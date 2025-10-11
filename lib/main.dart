@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wtf_flutter_projects/bottom_custom_navigation.dart';
 import 'package:wtf_flutter_projects/home_page.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 183, 181, 58)),
       ),
      debugShowCheckedModeBanner: false,
-      home: HomePage()
+      home: BottomNavigation(),
     );
   }
 }
