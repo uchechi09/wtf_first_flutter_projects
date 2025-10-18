@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:wtf_flutter_projects/bottom_custom_navigation.dart';
-import 'package:wtf_flutter_projects/home_page.dart';
-import 'package:wtf_flutter_projects/onboarding_page.dart';
+import 'package:wtf_flutter_projects/pages/home_page.dart';
+import 'package:wtf_flutter_projects/pages/login_page.dart';
+import 'package:wtf_flutter_projects/pages/onboarding_page.dart';
+import 'package:wtf_flutter_projects/pages/signup_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,8 +24,12 @@ class MyApp extends StatelessWidget {
      debugShowCheckedModeBanner: false,
      routes: {
       "/": (context)=> OnboardingPage(),
+      "/home": (context)=> BottomNavigation(),
+      "/login": (context)=> LoginPage(),
+      "/signup":(context)=> SignupPage(),
       
      },
+     initialRoute: "/login",
       //home: BottomNavigation(),
     );
   }

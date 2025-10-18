@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wtf_flutter_projects/notifications_page.dart';
-import 'package:wtf_flutter_projects/payment_method_page.dart';
+import 'package:wtf_flutter_projects/pages/notifications_page.dart';
+import 'package:wtf_flutter_projects/pages/payment_method_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
