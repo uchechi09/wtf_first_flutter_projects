@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wtf_flutter_projects/widgets/custom_indicator.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
@@ -90,32 +91,6 @@ OnboardingItem(
   }
 }
 
-class Customeindicator extends StatelessWidget {
-  const Customeindicator({
-    required this.indicatorCount,
-    required this.activeindex,
-  });
-  final int indicatorCount;
-  final int activeindex;
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      spacing: 2,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(
-        indicatorCount,
-        (index) => Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: activeindex == index ? Colors.blue : Colors.blue.shade200,
-          ),
-          height: 10,
-          width: 10,
-        ),
-      ),
-    );
-  }
-}
 
 class OnboardingItem {
   String title;

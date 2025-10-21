@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:icons_plus/icons_plus.dart';
+import 'package:wtf_flutter_projects/pages/login_page.dart';
+import 'package:wtf_flutter_projects/widgets/custom_button.dart';
+import 'package:wtf_flutter_projects/widgets/custom_textfield.dart';
+import 'package:wtf_flutter_projects/widgets/password_textfield.dart';
+import 'package:wtf_flutter_projects/widgets/social_signin.dart';
+
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -17,8 +21,11 @@ class _SignupPageState extends State<SignupPage> {
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
         child: Column(
+          spacing: 16,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(height: 120),
+            SizedBox(height: 100,),
             Text(
               "Get Started",
               textAlign: TextAlign.center,
@@ -28,71 +35,24 @@ class _SignupPageState extends State<SignupPage> {
                 color: Colors.blueAccent,
               ),
             ),
-            SizedBox(height: 10,),
+           
             Text(
               "Register Your Details Below",
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16),
+              style:
+               TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 30,),
-            TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
-                labelText: "Full Name"
-              ),
-            ),
-              SizedBox(height: 30,),
-            TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
-                labelText: "Email"
-              ),
-            ),
-              SizedBox(height: 30,),
-            TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
-                labelText: "Password"
-              ),
-              obscureText: true,
-            ),
-             SizedBox(height: 16),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                fixedSize: Size(400, 55),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                backgroundColor: Colors.blue,
-                foregroundColor: Colors.white,
-              ),
-              onPressed: () {},
-              child: Text("Sign up"),
-            ),
-            SizedBox(height: 24),
-            Row(
-              spacing: 8,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Expanded(child: Divider()),
-                Text("Sign up with"),
-                Expanded(child: Divider()),
-              ],
-            ),
-            SizedBox(height: 20,),
-           Row(
-            spacing: 28,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-             children: [
-              SizedBox(height:20 ),
-               Icon(FontAwesome.facebook_brand,color: Colors.blue,size: 24,),
-                Icon(FontAwesome.google_brand,color:  Colors.red.shade900,size: 20,),
-                Icon(FontAwesomeIcons.instagram,color: Colors.red,size: 24,),
-              
-             ],
+           CustomTextField(label: "Username"),
+           CustomTextField(label: "Email"),
+           PassswordTextField(),
+           PassswordTextField(),
+           CustomButton(text: "Sign Up",
+           onPressed: () {
+              Navigator.of(context).pushReplacementNamed("/home");
+            },
            ),
-            SizedBox(height: 20),
+           SocialSignin(text: "Sign up with",), 
+            SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
