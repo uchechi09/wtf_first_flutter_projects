@@ -37,13 +37,22 @@ class LoginPage extends StatelessWidget {
             SizedBox(height: 16),
             PassswordTextField(),
             SizedBox(height: 16),
+            Row(
+              spacing: 8,
+              children: [
+                Icon(Icons.check_box_outline_blank),
+                Text("Remember me"),
+                 Text("Forgotten Password?",textAlign: TextAlign.end),
+              ],
+            ),
+            SizedBox(height: 12,),
             CustomButton(text: "Login",
             onPressed: () {
               Navigator.of(context).pushReplacementNamed("/home");
             },
             ),
             SizedBox(height: 24),
-
+            
             SocialSignin(text: "Sign in with",),
 
             SizedBox(height: 36),

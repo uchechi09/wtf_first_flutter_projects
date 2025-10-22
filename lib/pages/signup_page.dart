@@ -42,7 +42,7 @@ class _SignupPageState extends State<SignupPage> {
               style:
                TextStyle(fontSize: 16),
             ),
-           CustomTextField(label: "Username"),
+           CustomTextField(label: "Full Name"),
            CustomTextField(label: "Email"),
            PassswordTextField(),
            PassswordTextField(),

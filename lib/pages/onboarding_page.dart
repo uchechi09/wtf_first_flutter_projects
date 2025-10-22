@@ -47,8 +47,6 @@ OnboardingItem(
             style: GoogleFonts.andika(fontWeight: FontWeight.w900, fontSize: 28)
             
           ),
-          
-          
           Text(
             onboardingItemToShow.subtitle,
             style: GoogleFonts.k2d(fontSize: 16),
@@ -56,6 +54,7 @@ OnboardingItem(
           ),
         ],
       ),
+      
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(

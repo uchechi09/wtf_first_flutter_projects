@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wtf_flutter_projects/bottom_custom_navigation.dart';
+import 'package:wtf_flutter_projects/pages/contact_page.dart';
+import 'package:wtf_flutter_projects/pages/forgotten_password.dart';
 import 'package:wtf_flutter_projects/pages/home_page.dart';
 import 'package:wtf_flutter_projects/pages/login_page.dart';
 import 'package:wtf_flutter_projects/pages/onboarding_page.dart';
@@ -23,13 +25,15 @@ class MyApp extends StatelessWidget {
       ),
      debugShowCheckedModeBanner: false,
      routes: {
-      "/": (context)=> OnboardingPage(),
+      "/o": (context)=> OnboardingPage(),
       "/home": (context)=> BottomNavigation(),
       "/login": (context)=> LoginPage(),
       "/signup":(context)=> SignupPage(),
+      "/contact": (context)=> ContactPage(),
+      //"/forgotten":(context)=> ForgottenPassword(),
       
      },
-     //initialRoute: "/login",
+     initialRoute: "/contact",
       //home: BottomNavigation(),
     );
   }
