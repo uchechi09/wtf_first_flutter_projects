@@ -30,11 +30,11 @@ class MyApp extends StatelessWidget {
       "/login": (context)=> LoginPage(),
       "/signup":(context)=> SignupPage(),
       "/contact": (context)=> ContactPage(),
-      //"/forgotten":(context)=> ForgottenPassword(),
+      "/forgotten":(context)=> ForgottenPassword(),
       
      },
-     initialRoute: "/contact",
-      //home: BottomNavigation(),
+     initialRoute: "/home",
+    //home: BottomNavigation(),
     );
   }
 }

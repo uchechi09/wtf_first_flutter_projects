@@ -41,7 +41,7 @@ class SocialSignin extends StatelessWidget {
             ),
             InkWell(
               onTap: () {},
-              child: Image.asset("assets/x.png", width: 40, height: 40),
+              child: Image.asset("assets/xt.png", width: 40, height: 40),
             ),
           ],
         ),

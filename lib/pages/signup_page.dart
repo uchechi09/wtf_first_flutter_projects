@@ -15,6 +15,18 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
+  TextEditingController emailController =TextEditingController();
+  TextEditingController fullnameController = TextEditingController();
+  TextEditingController passwordController =TextEditingController();
+  TextEditingController confirmpasswordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    confirmpasswordController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,13 +54,27 @@ class _SignupPageState extends State<SignupPage> {
               style:
                TextStyle(fontSize: 16),
             ),
-           CustomTextField(label: "Full Name"),
-           CustomTextField(label: "Email"),
-           PassswordTextField(),
-           PassswordTextField(),
+           CustomTextField(label: "Full Name",
+           textEditingController: fullnameController,
+           ),
+           CustomTextField(label: "Email",
+           textEditingController: emailController,),
+           PassswordTextField(label: "Password",
+           textEditingController: passwordController,),
+           PassswordTextField(label: "Confirm Password",
+           textEditingController: confirmpasswordController,),
            CustomButton(text: "Sign Up",
            onPressed: () {
-              Navigator.of(context).pushReplacementNamed("/home");
+                 if(fullnameController.text == "Uchechi Grace"
+                   && emailController.text == "uchechi@gmail.com"
+                   && passwordController.text == "19930" && confirmpasswordController.text == "19930" ){
+                 Navigator.of(context).pushReplacementNamed("/login");
+                   }else{
+                    ScaffoldMessenger.of(context).showSnackBar(
+                     SnackBar(content: Text("Enter a Matching Info", textAlign: TextAlign.center,),),
+                    );
+                   }
+              //Navigator.of(context).pushReplacementNamed("/login");
             },
            ),
            SocialSignin(text: "Sign up with",), 
@@ -59,7 +85,7 @@ class _SignupPageState extends State<SignupPage> {
                 Text("Already have an account?"),
                 GestureDetector(
                 onTap: () {
-                  Navigator.of(context).pushReplacementNamed("/login");
+                 Navigator.of(context).pushReplacementNamed("/login");
                 },
                   child: Text("Sign in", style: TextStyle(color: Colors.blue)),
                 ),

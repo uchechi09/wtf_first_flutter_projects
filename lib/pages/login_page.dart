@@ -6,8 +6,25 @@ import 'package:wtf_flutter_projects/widgets/custom_textfield.dart';
 import 'package:wtf_flutter_projects/widgets/password_textfield.dart';
 import 'package:wtf_flutter_projects/widgets/social_signin.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+var check_box_outline_blank = false;
+
+class _LoginPageState extends State<LoginPage> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,27 +50,57 @@ class LoginPage extends StatelessWidget {
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 32),
-            CustomTextField(label: "Email"),
+            CustomTextField(
+              label: "Email",
+              textEditingController: emailController,
+            ),
             SizedBox(height: 16),
-            PassswordTextField(),
+            PassswordTextField(
+              label: "Password",
+              textEditingController: passwordController,
+            ),
             SizedBox(height: 16),
             Row(
-              spacing: 8,
-              children: [
-                Icon(Icons.check_box_outline_blank),
+                children: [
+                Icon(
+                Icons.check_box_outline_blank,      
+              ),
                 Text("Remember me"),
-                 Text("Forgotten Password?",textAlign: TextAlign.end),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushReplacementNamed("/forgotten");
+                  },
+              
+                  child: Text(
+                "Forgotten Password?",
+                 textAlign: TextAlign.left,
+                 style: TextStyle(color: Colors.blue),
+                ),
+                ),
               ],
             ),
-            SizedBox(height: 12,),
-            CustomButton(text: "Login",
-            onPressed: () {
-              Navigator.of(context).pushReplacementNamed("/home");
-            },
+
+            SizedBox(height: 20),
+            CustomButton(
+              text: "Login",
+              onPressed: () {
+                if (emailController.text == "uchechi@gmail.com" &&
+                    passwordController.text == "19930") {
+                  Navigator.of(context).pushReplacementNamed("/home");
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        "Invalid Email or Password! try again",
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  );
+                }
+              },
             ),
             SizedBox(height: 24),
-            
-            SocialSignin(text: "Sign in with",),
+            SocialSignin(text: "Sign in with"),
 
             SizedBox(height: 36),
             Row(
@@ -74,4 +121,3 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
-
