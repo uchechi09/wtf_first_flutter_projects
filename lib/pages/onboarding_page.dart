@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wtf_flutter_projects/model/onboarding_items.dart';
 import 'package:wtf_flutter_projects/widgets/custom_indicator.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -91,14 +92,3 @@ OnboardingItem(
 }
 
 
-class OnboardingItem {
-  String title;
-  String subtitle;
-  String asset;
-
-OnboardingItem({
-  required this.title,
-  required this.subtitle,
-  required this.asset,
-});
-}

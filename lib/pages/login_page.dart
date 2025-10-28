@@ -84,20 +84,20 @@ class _LoginPageState extends State<LoginPage> {
             CustomButton(
               text: "Login",
               onPressed: () {
-                if (emailController.text == "uchechi@gmail.com" &&
-                    passwordController.text == "19930") {
-                  Navigator.of(context).pushReplacementNamed("/home");
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        "Invalid Email or Password! try again",
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  );
-                }
-              },
+              //   if (emailController.text == "uchechi@gmail.com" &&
+              //       passwordController.text == "19930") {
+              //     Navigator.of(context).pushReplacementNamed("/home");
+              //   } else {
+              //     ScaffoldMessenger.of(context).showSnackBar(
+              //       SnackBar(
+              //         content: Text(
+              //           "Invalid Email or Password! try again",
+              //           textAlign: TextAlign.center,
+              //         ),
+              //       ),
+              //     );
+              //   }
+               },
             ),
             SizedBox(height: 24),
             SocialSignin(text: "Sign in with"),
