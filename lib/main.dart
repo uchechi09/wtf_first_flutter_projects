@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       "/forgotten":(context)=> ForgottenPassword(),
       
      },
-     initialRoute: "/home",
+     initialRoute: "/forgotten",
     //home: BottomNavigation(),
     );
   }

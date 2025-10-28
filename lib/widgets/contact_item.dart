@@ -8,10 +8,12 @@ class Contactitem extends StatefulWidget {
 
   @override
   State<Contactitem> createState() => _ContactitemState();
-}
 
+}
 class _ContactitemState extends State<Contactitem> {
+  
   List<String> history = [];
+  
 
   void makePhoneCall(String phoneNumber) async {
     final Uri launchUri = Uri(scheme: "tel", path: phoneNumber);
@@ -33,9 +35,11 @@ class _ContactitemState extends State<Contactitem> {
   void addToHistory(String event) {
     setState(() {
       history.add("$event . ${TimeOfDay.now().format(context)}");
+      
     });
   }
 
+  
   @override
   Widget build(BuildContext context) {
     return ListTile(

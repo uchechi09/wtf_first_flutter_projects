@@ -36,34 +36,37 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: TabBarView(
                 children: [
-                  Image.asset("assets/map.jpg",fit: BoxFit.cover,),
-                  ListView(
-                      children: [
-                      Contactitem(),
-                       Contactitem(),
-                        Contactitem(),
-                         Contactitem(),
-                         Contactitem(),
-                         Contactitem(),
-                         Contactitem(),
-                         Contactitem(),
-                         Contactitem(),
-                         Contactitem(),
-                         Contactitem(),
-                         Contactitem(),
-                         Contactitem(),
-                         Contactitem(),
-                         Contactitem(),
-                         
-                      ]
-                    ),
+                  InteractiveViewer(
+                    child: Image.asset("assets/map.jpg", fit: BoxFit.fitWidth,)),
+                  _buildListView(),
                 ],
               ),
-              ),
+            ),
           ],
-          
         ),
       ),
+    );
+  }
+
+  ListView _buildListView() {
+    return ListView(
+      children: [
+        Contactitem(),
+        Contactitem(),
+        Contactitem(),
+        Contactitem(),
+        Contactitem(),
+        Contactitem(),
+        Contactitem(),
+        Contactitem(),
+        Contactitem(),
+        Contactitem(),
+        Contactitem(),
+        Contactitem(),
+        Contactitem(),
+        Contactitem(),
+        Contactitem(),
+      ],
     );
   }
 }
