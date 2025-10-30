@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:wtf_flutter_projects/pages/signup_page.dart';
+import 'package:wtf_flutter_projects/provider/user_notifier.dart';
 import 'package:wtf_flutter_projects/widgets/custom_button.dart';
 import 'package:wtf_flutter_projects/widgets/custom_textfield.dart';
 import 'package:wtf_flutter_projects/widgets/password_textfield.dart';
 import 'package:wtf_flutter_projects/widgets/social_signin.dart';
+
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -28,6 +32,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    var userNotifier = Provider.of<UserNotifier>(context);
+
     return Scaffold(
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
@@ -61,21 +67,19 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(height: 16),
             Row(
-                children: [
-                Icon(
-                Icons.check_box_outline_blank,      
-              ),
+              children: [
+                Icon(Icons.check_box_outline_blank),
                 Text("Remember me"),
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushReplacementNamed("/forgotten");
                   },
-              
+
                   child: Text(
-                "Forgotten Password?",
-                 textAlign: TextAlign.left,
-                 style: TextStyle(color: Colors.blue),
-                ),
+                    "Forgotten Password?",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(color: Colors.blue),
+                  ),
                 ),
               ],
             ),
@@ -84,20 +88,22 @@ class _LoginPageState extends State<LoginPage> {
             CustomButton(
               text: "Login",
               onPressed: () {
-              //   if (emailController.text == "uchechi@gmail.com" &&
-              //       passwordController.text == "19930") {
-              //     Navigator.of(context).pushReplacementNamed("/home");
-              //   } else {
-              //     ScaffoldMessenger.of(context).showSnackBar(
-              //       SnackBar(
-              //         content: Text(
-              //           "Invalid Email or Password! try again",
-              //           textAlign: TextAlign.center,
-              //         ),
-              //       ),
-              //     );
-              //   }
-               },
+                //checking the login method in out notifier class
+                userNotifier.login(context, emailController.text, passwordController.text);
+                //   if (emailController.text == "uchechi@gmail.com" &&
+                //       passwordController.text == "19930") {
+                //     Navigator.of(context).pushReplacementNamed("/home");
+                //   } else {
+                //     ScaffoldMessenger.of(context).showSnackBar(
+                //       SnackBar(
+                //         content: Text(
+                //           "Invalid Email or Password! try again",
+                //           textAlign: TextAlign.center,
+                //         ),
+                //       ),
+                //     );
+                //   }
+              },
             ),
             SizedBox(height: 24),
             SocialSignin(text: "Sign in with"),

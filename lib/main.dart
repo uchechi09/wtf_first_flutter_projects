@@ -33,11 +33,11 @@ class MyApp extends StatelessWidget {
         "/home": (context)=> BottomNavigation(),
         "/login": (context)=> LoginPage(),
         "/signup":(context)=> SignupPage(),
-        "/contact": (context)=> ContactPage(),
+        //"/contact": (context)=> ContactPage(),
         "/forgotten":(context)=> ForgottenPassword(),
         
        },
-       initialRoute: "/forgotten",
+       initialRoute: "/login",
       //home: BottomNavigation(),
       ),
     );

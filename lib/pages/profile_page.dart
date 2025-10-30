@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wtf_flutter_projects/model/user_details.dart';
 import 'package:wtf_flutter_projects/pages/notifications_page.dart';
 import 'package:wtf_flutter_projects/pages/payment_method_page.dart';
+import 'package:wtf_flutter_projects/provider/user_notifier.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +20,7 @@ class ProfilePage extends StatelessWidget {
         padding: EdgeInsets.all(16),
         children: [
           _buildprofiledetails(),
-          _buildtextdettails(),
+          _buildtextdettails(context),
 
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,14 +60,14 @@ class ProfilePage extends StatelessWidget {
           ),
           Divider(),
 
-          _buildsupportsections(),
+          _buildsupportsections(context),
           SizedBox(height: 16),
         ],
       ),
     );
   }
 
-  Column _buildsupportsections() {
+  Column _buildsupportsections(context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -90,7 +93,9 @@ class ProfilePage extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, "/login");
+          },
           icon: Icon(Icons.logout),
           label: Text("Logout"),
         ),
@@ -113,15 +118,18 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Column _buildtextdettails() {
+  Widget _buildtextdettails(context) {
+    UserDetails? user = Provider.of<UserNotifier>(context).loggedInUser;
+    
+    if (user == null) return Text("user details not set");
     return Column(
       children: [
         Text(
-          "Hannah Peters",
+          user.name,
           style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
         ),
         Text(
-          "Hannahpeters@gmail.com",
+       user.email,
           style: TextStyle(fontWeight: FontWeight.w300, fontSize: 13),
         ),
       ],
