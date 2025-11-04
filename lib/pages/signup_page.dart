@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:wtf_flutter_projects/pages/login_page.dart';
-import 'package:wtf_flutter_projects/provider/user_notifier.dart';
+import 'package:wtf_flutter_projects/provider/user_cubit.dart';
 import 'package:wtf_flutter_projects/widgets/custom_button.dart';
 import 'package:wtf_flutter_projects/widgets/custom_textfield.dart';
 import 'package:wtf_flutter_projects/widgets/password_textfield.dart';
@@ -31,7 +31,7 @@ class _SignupPageState extends State<SignupPage> {
   }
   @override
   Widget build(BuildContext context) {
-    var userNotifier = Provider.of<UserNotifier>(context);
+    var userNotifier = Provider.of<UserCubit>(context);
     return Scaffold(
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
@@ -69,7 +69,7 @@ class _SignupPageState extends State<SignupPage> {
            CustomButton(text: "Sign Up",
            onPressed: () {
 
-            userNotifier.singnup(emailController.text, fullnameController.text, context);
+            //UserCubit.signup(emailController.text, fullnameController.text,context);
               //    if(fullname
               //    Controller.text == "Uchechi Grace"
               //      && emailController.text == "uchechi@gmail.com"

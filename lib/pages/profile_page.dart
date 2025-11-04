@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:wtf_flutter_projects/model/user_details.dart';
 import 'package:wtf_flutter_projects/pages/notifications_page.dart';
 import 'package:wtf_flutter_projects/pages/payment_method_page.dart';
-import 'package:wtf_flutter_projects/provider/user_notifier.dart';
+import 'package:wtf_flutter_projects/provider/user_cubit.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -119,7 +119,7 @@ class ProfilePage extends StatelessWidget {
   }
 
   Widget _buildtextdettails(context) {
-    UserDetails? user = Provider.of<UserNotifier>(context).loggedInUser;
+    UserDetails? user = Provider.of<UserCubit>(context).state;
     
     if (user == null) return Text("user details not set");
     return Column(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:wtf_flutter_projects/bottom_custom_navigation.dart';
 import 'package:wtf_flutter_projects/pages/contact_page.dart';
@@ -7,7 +8,7 @@ import 'package:wtf_flutter_projects/pages/home_page.dart';
 import 'package:wtf_flutter_projects/pages/login_page.dart';
 import 'package:wtf_flutter_projects/pages/onboarding_page.dart';
 import 'package:wtf_flutter_projects/pages/signup_page.dart';
-import 'package:wtf_flutter_projects/provider/user_notifier.dart';
+import 'package:wtf_flutter_projects/provider/user_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,8 +20,8 @@ class MyApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => UserNotifier(),
+    return BlocProvider(
+      create: (context) => UserCubit(),
       child: MaterialApp(
         title: 'Save a Life',
         theme: ThemeData(
