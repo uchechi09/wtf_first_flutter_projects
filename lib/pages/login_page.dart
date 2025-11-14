@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:wtf_flutter_projects/pages/signup_page.dart';
 import 'package:wtf_flutter_projects/provider/user_notifier.dart';
 import 'package:wtf_flutter_projects/widgets/custom_button.dart';
 import 'package:wtf_flutter_projects/widgets/custom_textfield.dart';
@@ -17,6 +16,7 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
+// ignore: non_constant_identifier_names
 var check_box_outline_blank = false;
 
 class _LoginPageState extends State<LoginPage> {
@@ -90,19 +90,6 @@ class _LoginPageState extends State<LoginPage> {
               onPressed: () {
                 //checking the login method in out notifier class
                 userNotifier.login(context, emailController.text, passwordController.text);
-                //   if (emailController.text == "uchechi@gmail.com" &&
-                //       passwordController.text == "19930") {
-                //     Navigator.of(context).pushReplacementNamed("/home");
-                //   } else {
-                //     ScaffoldMessenger.of(context).showSnackBar(
-                //       SnackBar(
-                //         content: Text(
-                //           "Invalid Email or Password! try again",
-                //           textAlign: TextAlign.center,
-                //         ),
-                //       ),
-                //     );
-                //   }
               },
             ),
             SizedBox(height: 24),

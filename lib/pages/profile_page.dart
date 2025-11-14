@@ -5,9 +5,14 @@ import 'package:wtf_flutter_projects/pages/notifications_page.dart';
 import 'package:wtf_flutter_projects/pages/payment_method_page.dart';
 import 'package:wtf_flutter_projects/provider/user_notifier.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
-  
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,12 +24,12 @@ class ProfilePage extends StatelessWidget {
       body: ListView(
         padding: EdgeInsets.all(16),
         children: [
-          _buildprofiledetails(),
-          _buildtextdettails(context),
+          _buildProfileDetails(),
+          _buildTextDetails(context),
 
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [_buildaccountsection(), SizedBox(height: 16)],
+            children: [_buildAccountSection(), SizedBox(height: 16)],
           ),
           ListTile(
             title: Text("Personal Information", style: TextStyle(fontSize: 16)),
@@ -60,14 +65,15 @@ class ProfilePage extends StatelessWidget {
           ),
           Divider(),
 
-          _buildsupportsections(context),
+          _buildSupportSections(context),
           SizedBox(height: 16),
         ],
       ),
     );
   }
 
-  Column _buildsupportsections(context) {
+  Column _buildSupportSections(context) {
+    var userNotifier = Provider.of<UserNotifier>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -94,6 +100,7 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           onPressed: () {
+            userNotifier.logout();
             Navigator.pushReplacementNamed(context, "/login");
           },
           icon: Icon(Icons.logout),
@@ -103,24 +110,28 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Text _buildaccountsection() {
+  Text _buildAccountSection() {
     return Text(
       "Account",
       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
     );
   }
 
-  Container _buildprofiledetails() {
+  Container _buildProfileDetails() {
+    UserDetails? user = Provider.of<UserNotifier>(context).loggedInUser;
     return Container(
       decoration: BoxDecoration(shape: BoxShape.circle),
       clipBehavior: Clip.hardEdge,
-      child: Image.asset("assets/profile_pic.jpeg", width: 100, height: 100),
+      // to access profile picture of email when signInWithGoogle
+      child: user!.profilepicture.isEmpty
+          ? Icon(Icons.person_2, size: 100)
+          : Image.network(user.profilepicture, width: 100, height: 100),
     );
   }
 
-  Widget _buildtextdettails(context) {
+  Widget _buildTextDetails(context) {
     UserDetails? user = Provider.of<UserNotifier>(context).loggedInUser;
-    
+
     if (user == null) return Text("user details not set");
     return Column(
       children: [
@@ -129,7 +140,7 @@ class ProfilePage extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
         ),
         Text(
-       user.email,
+          user.email,
           style: TextStyle(fontWeight: FontWeight.w300, fontSize: 13),
         ),
       ],

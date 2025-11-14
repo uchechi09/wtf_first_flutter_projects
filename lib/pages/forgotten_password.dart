@@ -1,11 +1,8 @@
 import 'dart:async';
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:otp_input/otp_input.dart';
 import 'package:wtf_flutter_projects/widgets/custom_button.dart';
 import 'package:wtf_flutter_projects/widgets/custom_textfield.dart';
-import 'package:wtf_flutter_projects/widgets/password_textfield.dart';
 
 class ForgottenPassword extends StatefulWidget {
   const ForgottenPassword({super.key});
@@ -23,8 +20,10 @@ class _ForgottenPasswordState extends State<ForgottenPassword> {
     timer.cancel();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -68,6 +67,7 @@ class _ForgottenPasswordState extends State<ForgottenPassword> {
       ),
     );
   }
+
   Widget _buildOtpView() {
     return Column(
       children: [

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Customeindicator extends StatelessWidget {
-  const Customeindicator({
+  const Customeindicator({super.key, 
     required this.indicatorCount,
     required this.activeindex,
   });

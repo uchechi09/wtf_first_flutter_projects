@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+//import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:wtf_flutter_projects/widgets/contact_item.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+ const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -24,7 +25,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: DefaultTabController(
-        length: 2,
+        length: 1,
         child: Column(
           children: [
             TabBar(
@@ -36,9 +37,15 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: TabBarView(
                 children: [
-                  InteractiveViewer(
-                    child: Image.asset("assets/map.jpg", fit: BoxFit.fitWidth,)),
-                  _buildListView(),
+                  // GoogleMap(
+                  //   //onMapCreated: _onMapCreated,
+                  //   initialCameraPosition: const CameraPosition(
+                  //     target: LatLng(0, 0),
+                  //     zoom: 2,
+                  //   ),
+                  // //  markers: _markers.values.toSet(),
+                  // ),
+                    _buildListView(),
                 ],
               ),
             ),

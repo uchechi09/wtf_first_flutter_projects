@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:wtf_flutter_projects/pages/login_page.dart';
 import 'package:wtf_flutter_projects/provider/user_notifier.dart';
 import 'package:wtf_flutter_projects/widgets/custom_button.dart';
 import 'package:wtf_flutter_projects/widgets/custom_textfield.dart';
@@ -69,21 +68,16 @@ class _SignupPageState extends State<SignupPage> {
            CustomButton(text: "Sign Up",
            onPressed: () {
 
-            userNotifier.singnup(emailController.text, fullnameController.text, context);
-              //    if(fullname
-              //    Controller.text == "Uchechi Grace"
-              //      && emailController.text == "uchechi@gmail.com"
-              //      && passwordController.text == "19930" && confirmpasswordController.text == "19930" ){
-              //    Navigator.of(context).pushReplacementNamed("/home");
-              //      }else{
-              //       ScaffoldMessenger.of(context).showSnackBar(
-              //        SnackBar(content: Text("Enter a Matching Info", textAlign: TextAlign.center,),),
-              //       );
-              //      }
-               Navigator.of(context).pushReplacementNamed("/home");
+            userNotifier.signup(
+              context: context,
+              fullname:fullnameController.text, 
+              password: passwordController.text,
+              email: emailController.text);
+    
             },
            ),
-           SocialSignin(text: "Sign up with",), 
+           SocialSignin
+           (text: "Sign up with",), 
             SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

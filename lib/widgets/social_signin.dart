@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wtf_flutter_projects/provider/user_notifier.dart';
 
 class SocialSignin extends StatelessWidget {
-  const SocialSignin({
-    super.key, required this.text,
-  });
-    final String text;
+  const SocialSignin({super.key, required this.text});
+  final String text;
   @override
   Widget build(BuildContext context) {
+    var userP = Provider.of<UserNotifier>(context);
     return Column(
       children: [
         Row(
@@ -24,20 +25,14 @@ class SocialSignin extends StatelessWidget {
           spacing: 12,
           children: [
             InkWell(
-              onTap: () {},
-              child: Image.asset(
-                "assets/google.png",
-                width: 40,
-                height: 40,
-              ),
+              onTap: () {
+                userP.signInWithGoogle(context);
+              },
+              child: Image.asset("assets/google.png", width: 40, height: 40),
             ),
             InkWell(
               onTap: () {},
-              child: Image.asset(
-                "assets/facebook.png",
-                width: 40,
-                height: 40,
-              ),
+              child: Image.asset("assets/facebook.png", width: 40, height: 40),
             ),
             InkWell(
               onTap: () {},
@@ -49,3 +44,6 @@ class SocialSignin extends StatelessWidget {
     );
   }
 }
+
+
+

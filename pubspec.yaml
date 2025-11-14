@@ -41,6 +41,11 @@ dependencies:
   google_fonts: ^6.3.2
   otp_input: ^1.0.4
   provider: ^6.1.5+1
+  google_maps_flutter: ^2.14.0
+  firebase_core: ^4.2.1
+  firebase_auth: ^6.1.2
+  cloud_firestore: ^6.1.0
+  google_sign_in: ^7.2.0
 
 dev_dependencies:
   flutter_test:

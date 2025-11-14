@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "709297244159",
+    "project_id": "medicall-ae781",
+    "storage_bucket": "medicall-ae781.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709297244159:android:e489d526169f1a4d9289ca",
+        "android_client_info": {
+          "package_name": "com.example.wtf_flutter_projects"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "709297244159-gcnrp8d4it67qkfapvo7a6hs8sv6nd36.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wtf_flutter_projects",
+            "certificate_hash": "03b8d101639c62092a25d8b3defafca9ea05e091"
+          }
+        },
+        {
+          "client_id": "709297244159-bhn7fhhdbk8bfnc74qsq19o31kauv8uh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBhghKOXqxY0SAks3iD-acaksyGq5sLWk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "709297244159-bhn7fhhdbk8bfnc74qsq19o31kauv8uh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "709297244159-su2db1329ela7fc3k8mvqevcphfvc4q4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.wtfFlutterProjects"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
