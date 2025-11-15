@@ -10,19 +10,19 @@ import 'package:wtf_flutter_projects/pages/forgotten_password.dart';
 import 'package:wtf_flutter_projects/pages/login_page.dart';
 import 'package:wtf_flutter_projects/pages/onboarding_page.dart';
 import 'package:wtf_flutter_projects/pages/signup_page.dart';
+import 'package:wtf_flutter_projects/provider/hospital_notifier.dart';
 import 'package:wtf_flutter_projects/provider/user_notifier.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   GoogleSignIn.instance.initialize(
-    clientId: Platform.isAndroid ? 
-    "709297244159-gcnrp8d4it67qkfapvo7a6hs8sv6nd36.apps.googleusercontent.com"
-    :"709297244159-su2db1329ela7fc3k8mvqevcphfvc4q4.apps.googleusercontent.com",
-    serverClientId: "709297244159-bhn7fhhdbk8bfnc74qsq19o31kauv8uh.apps.googleusercontent.com",
-    );
-
-
+    clientId: Platform.isAndroid
+        ? "709297244159-gcnrp8d4it67qkfapvo7a6hs8sv6nd36.apps.googleusercontent.com"
+        : "709297244159-su2db1329ela7fc3k8mvqevcphfvc4q4.apps.googleusercontent.com",
+    serverClientId:
+        "709297244159-bhn7fhhdbk8bfnc74qsq19o31kauv8uh.apps.googleusercontent.com",
+  );
 
   runApp(const MyApp());
 }
@@ -33,25 +33,28 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => UserNotifier(),
-      child: MaterialApp(
-        title: 'Save a Life',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromARGB(255, 183, 181, 58),
+      create: (context) => HospitalNotifier(),
+      child: ChangeNotifierProvider(
+        create: (context) => UserNotifier(),
+        child: MaterialApp(
+          title: 'Save a Life',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: const Color.fromARGB(255, 183, 181, 58),
+            ),
           ),
+          debugShowCheckedModeBanner: false,
+          routes: {
+            "/o": (context) => OnboardingPage(),
+            "/home": (context) => BottomNavigation(),
+            "/login": (context) => LoginPage(),
+            "/signup": (context) => SignupPage(),
+            //"/contact": (context)=> ContactPage(),
+            "/forgotten": (context) => ForgottenPassword(),
+          },
+          initialRoute: "/login",
+          //home: BottomNavigation(),
         ),
-        debugShowCheckedModeBanner: false,
-        routes: {
-          "/o": (context) => OnboardingPage(),
-          "/home": (context) => BottomNavigation(),
-          "/login": (context) => LoginPage(),
-          "/signup": (context) => SignupPage(),
-          //"/contact": (context)=> ContactPage(),
-          "/forgotten": (context) => ForgottenPassword(),
-        },
-        initialRoute: "/login",
-        //home: BottomNavigation(),
       ),
     );
   }
