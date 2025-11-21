@@ -32,29 +32,30 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => HospitalNotifier(),
-      child: ChangeNotifierProvider(
-        create: (context) => UserNotifier(),
-        child: MaterialApp(
-          title: 'Save a Life',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(
-              seedColor: const Color.fromARGB(255, 183, 181, 58),
-            ),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => UserNotifier()),
+        ChangeNotifierProvider(create: (context) => HospitalNotifier()),
+      ],
+
+      child: MaterialApp(
+        title: 'Save a Life',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 183, 181, 58),
           ),
-          debugShowCheckedModeBanner: false,
-          routes: {
-            "/o": (context) => OnboardingPage(),
-            "/home": (context) => BottomNavigation(),
-            "/login": (context) => LoginPage(),
-            "/signup": (context) => SignupPage(),
-            //"/contact": (context)=> ContactPage(),
-            "/forgotten": (context) => ForgottenPassword(),
-          },
-          initialRoute: "/login",
-          //home: BottomNavigation(),
         ),
+        debugShowCheckedModeBanner: false,
+        routes: {
+          "/o": (context) => OnboardingPage(),
+          "/home": (context) => BottomNavigation(),
+          "/login": (context) => LoginPage(),
+          "/signup": (context) => SignupPage(),
+          //"/contact": (context)=> ContactPage(),
+          "/forgotten": (context) => ForgottenPassword(),
+        },
+        initialRoute: "/login",
+        //home: BottomNavigation(),
       ),
     );
   }

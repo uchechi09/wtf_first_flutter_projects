@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/contact_item.dart';
+import 'package:wtf_flutter_projects/widgets/hospital_list.dart';
 
 class ContactPage extends StatefulWidget {
   const ContactPage({super.key});
@@ -9,27 +9,17 @@ class ContactPage extends StatefulWidget {
 }
 
 class _ContactPageState extends State<ContactPage> {
- 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Contacted Hospitals",
+          "Contact",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
         centerTitle: true,
       ),
-      body: ListView(
-        padding: EdgeInsets.all(16),
-        children: [
-          Card(
-            child: Contactitem(),
-          ),
-        ],
-      ),
+      body: HospitalList(),
     );
   }
 }
-

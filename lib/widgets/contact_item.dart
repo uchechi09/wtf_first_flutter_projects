@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:wtf_flutter_projects/model/hospital.dart';
 
 class Contactitem extends StatefulWidget {
-  const Contactitem({
-    super.key,
-  });
-
+  const Contactitem({super.key, required this.hospital});
+  final Hospital hospital;
   @override
   State<Contactitem> createState() => _ContactitemState();
-
 }
+
 class _ContactitemState extends State<Contactitem> {
-  
   List<String> history = [];
-  
 
   void makePhoneCall(String phoneNumber) async {
     final Uri launchUri = Uri(scheme: "tel", path: phoneNumber);
@@ -26,7 +23,7 @@ class _ContactitemState extends State<Contactitem> {
       scheme: "sms",
       queryParameters: <String, String>{"body": message},
     );
-    if(!await launchUrl(smsUri)){
+    if (!await launchUrl(smsUri)) {
       throw "could not launch sms app";
     }
     addToHistory("Message Sent");
@@ -35,11 +32,9 @@ class _ContactitemState extends State<Contactitem> {
   void addToHistory(String event) {
     setState(() {
       history.add("$event . ${TimeOfDay.now().format(context)}");
-      
     });
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -53,7 +48,7 @@ class _ContactitemState extends State<Contactitem> {
                 //crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    "String of Life Hospital",
+                    widget.hospital.name,
                     style: TextStyle(fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
@@ -69,19 +64,13 @@ class _ContactitemState extends State<Contactitem> {
                         decoration: BoxDecoration(
                           color: Colors.green.shade50,
                           shape: BoxShape.circle,
-                          boxShadow: [
-                            BoxShadow(color: Colors.green.shade200),
-                          ],
+                          boxShadow: [BoxShadow(color: Colors.green.shade200)],
                         ),
                         child: IconButton(
                           onPressed: () {
-                         makePhoneCall("08128005089");
+                            makePhoneCall("08128005089");
                           },
-                          icon: Icon(
-                            Icons.call,
-                            color: Colors.green,
-                            size: 40,
-                          ),
+                          icon: Icon(Icons.call, color: Colors.green, size: 40),
                         ),
                       ),
                       Container(
@@ -91,7 +80,7 @@ class _ContactitemState extends State<Contactitem> {
                         ),
                         child: IconButton(
                           onPressed: () {
-                           sendSMS("I need an urgent ambulance");
+                            sendSMS("I need an urgent ambulance");
                           },
                           icon: Icon(
                             Icons.message,
@@ -103,13 +92,13 @@ class _ContactitemState extends State<Contactitem> {
                     ],
                   ),
                   SizedBox(height: 24),
-    
+
                   Text("History", textAlign: TextAlign.left),
                   Text("No History Yet!", textAlign: TextAlign.right),
                 ],
               ),
             );
-          },
+          }
         );
       },
       leading: Container(
@@ -121,7 +110,7 @@ class _ContactitemState extends State<Contactitem> {
         child: Icon(Icons.add_box_outlined),
       ),
       title: Text(
-        "Spring of Life Hospital",
+        widget.hospital.name,
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       subtitle: Text("14th November, 2025"),

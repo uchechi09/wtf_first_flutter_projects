@@ -1,5 +1,8 @@
-import 'package:wtf_flutter_projects/model/review.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'hospital.g.dart';
+
+@JsonSerializable()
 class Hospital {
   final String id;
   final String address;
@@ -9,7 +12,6 @@ class Hospital {
   final int rating;
   final String website;
   final List<String> phoneNumber;
-  final List<Review> review;
 
   Hospital({
     required this.name,
@@ -20,6 +22,10 @@ class Hospital {
     required this.numberOfAmbulances,
     this.rating = 0,
     this.id = "",
-    this.review = const[],
   });
+
+  Map<String, dynamic> toJson() => _$HospitalToJson(this);
+
+  factory Hospital.fromJson(Map<String, dynamic> json) =>
+      _$HospitalFromJson(json);
 }
