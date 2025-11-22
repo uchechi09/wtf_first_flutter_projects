@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:wtf_flutter_projects/model/user_details.dart';
 import 'package:wtf_flutter_projects/pages/notifications_page.dart';
 import 'package:wtf_flutter_projects/pages/payment_method_page.dart';
+import 'package:wtf_flutter_projects/pages/personal_information.dart';
 import 'package:wtf_flutter_projects/provider/user_notifier.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -32,6 +33,11 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [_buildAccountSection(), SizedBox(height: 16)],
           ),
           ListTile(
+            onTap: (){
+              Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                return PersonalInformation();
+              }));
+            },
             title: Text("Personal Information", style: TextStyle(fontSize: 16)),
             trailing: Icon(Icons.arrow_forward_ios_outlined, size: 16),
           ),

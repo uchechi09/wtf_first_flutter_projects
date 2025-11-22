@@ -35,19 +35,20 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             Expanded(
-              child: TabBarView(
-                children: [
-                  // Center(child: Text("Map screen coming soon...")),
-                  GoogleMap(
-                    //onMapCreated: _onMapCreated,
-                    initialCameraPosition: const CameraPosition(
-                      target: LatLng(0, 0),
-                      zoom: 2,
+              child: AutomaticKeepAlive(
+                child: TabBarView(
+                  children: [
+                    GoogleMap(
+                      //onMapCreated: _onMapCreated,
+                      initialCameraPosition: const CameraPosition(
+                        target: LatLng(0, 0),
+                        zoom: 2,
+                      ),
+                      //markers: _markers.values.toSet(),
                     ),
-                  //  markers: _markers.values.toSet(),
-                  ),
-                  HospitalList(),
-                ],
+                    HospitalList(),
+                  ],
+                ),
               ),
             ),
           ],
@@ -56,5 +57,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-
