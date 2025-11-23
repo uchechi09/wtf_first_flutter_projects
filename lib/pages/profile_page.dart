@@ -33,10 +33,14 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [_buildAccountSection(), SizedBox(height: 16)],
           ),
           ListTile(
-            onTap: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                return PersonalInformation();
-              }));
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return PersonalInformation();
+                  },
+                ),
+              );
             },
             title: Text("Personal Information", style: TextStyle(fontSize: 16)),
             trailing: Icon(Icons.arrow_forward_ios_outlined, size: 16),
