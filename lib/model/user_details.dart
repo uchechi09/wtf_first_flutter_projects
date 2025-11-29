@@ -1,5 +1,8 @@
-// ignore_for_file: unnecessary_this
+import 'package:json_annotation/json_annotation.dart';
 
+part 'user_details.g.dart';
+
+@JsonSerializable()
 class UserDetails {
   const UserDetails({
     required this.name,
@@ -17,25 +20,10 @@ class UserDetails {
   final String address;
   final String occupation;
 
-  Map<String, dynamic> toJson() {
-    return {
-      "email": this.email,
-      "name": this.name,
-      "phoneNumber": this.phoneNumber,
-      "profilepicture": this.profilepicture,
-      "address": this.address,
-      "occupation": this.occupation,
-    };
-  }
+  Map<String, dynamic> toJson() => _$UserDetailsToJson(this);
+   
 
-  factory UserDetails.fromJson(Map<String, dynamic> json) {
-    return UserDetails(
-      name: json["name"],
-      email: json["email"],
-      profilepicture: json["profilepicture"],
-      phoneNumber: json["phoneNumber"],
-      address: json["address"],
-      occupation: json["occupation"],
-    );
-  }
+  factory UserDetails.fromJson(Map<String, dynamic> json) => _$UserDetailsFromJson(json);
+ 
+    
 }
